@@ -1,0 +1,20 @@
+model_default = "claude-sonnet-5"
+model_backup = "claude-opus-5"
+request_id = "REQ-001"
+asset_id = "AST-001"
+label_name = "Rights hold"
+db_path = "recall.db"
+airtable_rate_limit_wait_s = 30
+max_retries = 3
+verify_rereads = 3
+verify_window_s = 2.0
+tool_budget = 3
+investigation_concurrency = 3
+emergency_fallback = false
+
+[list_names]
+ideas = "Ideas"
+in_production = "In Production"
+scheduled = "Scheduled"
+published = "Published"
+rights_hold = "Rights Hold"

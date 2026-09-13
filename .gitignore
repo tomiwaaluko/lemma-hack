@@ -9,5 +9,6 @@ __pycache__/
 .pytest_cache/
 .venv/
 venv/
+*.egg-info/
 .agent-state/*
 !.agent-state/.gitkeep
