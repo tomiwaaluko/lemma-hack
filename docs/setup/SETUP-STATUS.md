@@ -8,12 +8,12 @@ Notion fixture setup: READY — PUBLICATION MANUAL STEP REMAINS. Riverbend Websi
 
 Trello fixture setup: PARTIAL. Board, five lists and T1–T12 are created and verified by read-back; move and label attach/detach verified on a probe card that was then archived. Blocked on the connected MCP: "Rights hold" label naming, T1/T2/T3 attachments, and comment add/read/delete. See docs/setup/TRELLO-MANIFEST.md.
 
-Airtable fixture setup: PENDING
+Airtable fixture setup: COMPLETE. Base "Riverbend Media Rights" has four tables per spec §2.2, plus AST-001, VAR-001-A/B/C, four Registered occurrence rows (N1/N2/N3 using the verified Notion block IDs, and the external flyer) and REQ-001 with verbatim request text. All were verified by read-back. T1/T2 are absent and there is no Purpose field. Probe create/read/update/delete passed and was cleaned up. See docs/setup/AIRTABLE-MANIFEST.md. The runtime token scoped to the base is still a manual step.
 
 Runtime Anthropic API verification: PENDING
 
 ## Next action
 
-Finish the Trello manual steps (rename red label to "Rights hold", upload T1/T2/T3 attachments, verify comments via REST), then complete Airtable fixture setup using the verified Notion block IDs. Notion web publishing remains a manual step.
+Finish remaining Trello REST verification and runtime Anthropic API check.
 
 This document may be updated during setup.

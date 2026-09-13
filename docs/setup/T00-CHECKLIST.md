@@ -34,19 +34,20 @@
 
 ## AIRTABLE
 
-- [ ] base created
-- [ ] Assets table
-- [ ] Variants table
-- [ ] Occurrences table
-- [ ] Permission Changes table
-- [ ] AST-001
-- [ ] VAR-001-A/B/C
-- [ ] N1/N2/N3 registered after Notion block IDs are known
-- [ ] external flyer registered
-- [ ] REQ-001 exact text
-- [ ] T1/T2 deliberately absent
-- [ ] no Purpose field
-- [ ] harmless write/read test verified
+- [x] base created (see docs/setup/AIRTABLE-MANIFEST.md)
+- [x] Assets table
+- [x] Variants table
+- [x] Occurrences table
+- [x] Permission Changes table
+- [x] AST-001
+- [x] VAR-001-A/B/C
+- [x] N1/N2/N3 registered after Notion block IDs are known
+- [x] external flyer registered
+- [x] REQ-001 exact text
+- [x] T1/T2 deliberately absent
+- [x] no Purpose field
+- [x] harmless write/read test verified (create/read/update/read-back/delete on a probe row)
+- [ ] runtime personal access token scoped to the base — manual step
 
 ## MODEL
 
