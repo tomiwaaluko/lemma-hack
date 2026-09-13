@@ -1,0 +1,16 @@
+{
+  "id": "card-t1",
+  "name": "Oct Volunteer Drive: Instagram carousel",
+  "desc": "A recruitment carousel for new volunteer mentors.",
+  "idList": "list-scheduled",
+  "idLabels": ["label-rights-hold"],
+  "due": "2026-10-01T14:00:00.000Z",
+  "attachments": [
+    {
+      "id": "attachment-1",
+      "name": "volunteer-drive-banner-2025.jpg",
+      "fileName": "volunteer-drive-banner-2025.jpg",
+      "url": "https://trello-attachments.example.test/attachment-1/volunteer-drive-banner-2025.jpg"
+    }
+  ]
+}

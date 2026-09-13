@@ -1,0 +1,15 @@
+{
+  "id": "card-t2",
+  "name": "Workshop anniversary throwback",
+  "desc": "A draft anniversary post.",
+  "idList": "list-production",
+  "idLabels": [],
+  "due": null,
+  "attachments": [
+    {
+      "id": "attachment-2",
+      "name": "Riverbend asset link",
+      "url": "https://assets.example.test/photos/amara-okafor-portrait.jpg?download=1"
+    }
+  ]
+}

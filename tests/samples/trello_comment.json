@@ -1,0 +1,7 @@
+{
+  "id": "comment-action-1",
+  "type": "commentCard",
+  "data": {
+    "text": "[recall-desk REQ-001 RUN-001 OP-003] Held: withdrawn use."
+  }
+}
