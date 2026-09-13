@@ -1,0 +1,94 @@
+{
+  "generated_at": "2026-09-13T22:29:06Z",
+  "commit": "65f0f7a00546c299750541128ad16b87630cd84b",
+  "model_id": "claude-sonnet-5",
+  "frozen": true,
+  "metrics": {
+    "critical_errors": 0,
+    "decisive_cases": {
+      "a": 2,
+      "b": 3
+    },
+    "decisive_runs": {
+      "x": 2,
+      "y": 3
+    },
+    "final_accuracy": 0.6666666666666666,
+    "scope_pass": true,
+    "scope_cases": {
+      "withdrawn_volunteer_recruitment": true,
+      "retained_2024_spring_workshop_recap": true
+    }
+  },
+  "gate": {
+    "critical_ok": true,
+    "decisive_ok": false,
+    "scope_ok": true,
+    "rules_ok": true,
+    "passed": false
+  },
+  "records": [
+    {
+      "case_id": "scope:withdrawn_volunteer_recruitment",
+      "run_index": 0,
+      "raw_verdict": "PASS",
+      "final_verdict": "PASS",
+      "downgrades": [],
+      "critical": false,
+      "correct_definite": null
+    },
+    {
+      "case_id": "scope:retained_2024_spring_workshop_recap",
+      "run_index": 0,
+      "raw_verdict": "PASS",
+      "final_verdict": "PASS",
+      "downgrades": [],
+      "critical": false,
+      "correct_definite": null
+    },
+    {
+      "case_id": "N1",
+      "run_index": 0,
+      "gold": "REMOVE",
+      "raw_verdict": "REMOVE",
+      "final_verdict": "REMOVE",
+      "downgrades": [],
+      "critical": false,
+      "correct_definite": true
+    },
+    {
+      "case_id": "N2",
+      "run_index": 0,
+      "gold": "PRESERVE",
+      "raw_verdict": "PRESERVE",
+      "final_verdict": "PRESERVE",
+      "downgrades": [],
+      "critical": false,
+      "correct_definite": true
+    },
+    {
+      "case_id": "N3",
+      "run_index": 0,
+      "gold": "PRESERVE",
+      "raw_verdict": "UNCERTAIN",
+      "final_verdict": "UNCERTAIN",
+      "downgrades": [],
+      "critical": false,
+      "correct_definite": false
+    },
+    {
+      "case_id": "T2",
+      "run_index": 0,
+      "gold": "UNCERTAIN",
+      "raw_verdict": "UNCERTAIN",
+      "final_verdict": "UNCERTAIN",
+      "downgrades": [],
+      "critical": false,
+      "correct_definite": null
+    }
+  ],
+  "rules_passed": true,
+  "fault_outcomes": {},
+  "crash_line": "Not run (eval-only model decision sprint)",
+  "duplicate_effects": 0
+}
