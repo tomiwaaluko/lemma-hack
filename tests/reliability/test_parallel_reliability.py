@@ -260,7 +260,7 @@ def test_trello_comment_failure_keeps_card_moved_and_labeled(tmp_path):
 
     with pytest.raises(RuntimeError, match="comment endpoint unavailable"):
         Executor(journal, None, trello).hold(
-            [op.op_id for op in ops], "card-1", "hold", "label", "[recall-desk REQ-001 RUN-001 comment-1] Held"
+            [op.op_id for op in ops], "card-1", "hold", "label", "REQ-001", "[recall-desk REQ-001 RUN-001 comment-1] Held"
         )
 
     assert trello.card.list_id == "hold"
@@ -282,7 +282,7 @@ def test_trello_existing_exact_request_marker_prevents_duplicate_comment(tmp_pat
     marker = "[recall-desk REQ-001 RUN-001 comment-2]"
     trello.comments = [TrelloComment(action_id="existing", text=f"{marker} Held")]
 
-    Executor(journal, None, trello).hold([op.op_id for op in ops], "card-1", "hold", "label", f"{marker} Held")
+    Executor(journal, None, trello).hold([op.op_id for op in ops], "card-1", "hold", "label", "REQ-001", f"{marker} Held")
 
     assert trello.comment_calls == 0
     assert [comment.text for comment in trello.comments] == [f"{marker} Held"]
