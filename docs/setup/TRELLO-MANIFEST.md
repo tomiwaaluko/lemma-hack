@@ -4,7 +4,7 @@ Created 2026-09-13 through the connected Trello MCP (workspace "Hackathons", `6a
 IDs below are Trello object IDs. The MCP addresses objects by ARI:
 `ari:cloud:trello::<type>/workspace/6aa6c2ec45072daf117af234/<objectId>`.
 
-No credentials or tokens are stored in this file.
+REST verification completed 2026-09-13. No credentials or tokens are stored in this file.
 
 BOARD_ID=6aa6f706da9b20af34821101
 BOARD_URL=https://trello.com/b/pKGVbDbn/riverbend-content-calendar
@@ -15,22 +15,24 @@ LIST_ID_SCHEDULED=6aa6f7329f47ad4f0543640f
 LIST_ID_PUBLISHED=6aa6f7393b77252f03d70434
 LIST_ID_RIGHTS_HOLD=6aa6f742cf8902339a999830
 
-RIGHTS_HOLD_LABEL_ID=PENDING — see "Remaining manual steps" (candidate: 6aa6f706da9b20af3482110a, red, currently unnamed)
+RIGHTS_HOLD_LABEL_ID=6aa6f706da9b20af3482110a
+RIGHTS_HOLD_LABEL_NAME=Rights hold
+RIGHTS_HOLD_LABEL_COLOR=red
 
 T1_CARD_ID=6aa6f75b30a189362e5fd0b8
 T1_CARD_URL=https://trello.com/c/axmsBWk6/1-oct-volunteer-drive-instagram-carousel
-T1_ATTACHMENT_ID=PENDING — manual upload required
-T1_ATTACHMENT_FILENAME=PENDING (target: volunteer-drive-banner-2025.jpg)
+T1_ATTACHMENT_ID=6aa6fcb1b05037b02ada0f06
+T1_ATTACHMENT_FILENAME=volunteer-drive-banner-2025.jpg
 
 T2_CARD_ID=6aa6f763644e485160dab57c
 T2_CARD_URL=https://trello.com/c/kDWip8yl/2-workshop-anniversary-throwback
-T2_ATTACHMENT_ID=PENDING — manual upload required
-T2_ATTACHMENT_FILENAME=PENDING (target: amara-okafor-portrait.jpg)
+T2_ATTACHMENT_ID=6aa6fcd52c37fb7b903e6e60
+T2_ATTACHMENT_FILENAME=amara-okafor-portrait.jpg
 
 T3_CARD_ID=6aa6f769404ab3b7949589a6
 T3_CARD_URL=https://trello.com/c/Ne4AKKLB/3-mentor-spotlight-jordan
-T3_ATTACHMENT_ID=PENDING — manual upload required
-T3_ATTACHMENT_FILENAME=PENDING (target: jordan-mentor.jpg)
+T3_ATTACHMENT_ID=6aa6fcf2ed707d3daa8b436e
+T3_ATTACHMENT_FILENAME=jordan-mentor.jpg
 
 T4_CARD_ID=6aa6f76ff6b70e5b14f587de
 T5_CARD_ID=6aa6f77593a9798864f64c8c
@@ -43,14 +45,26 @@ T11_CARD_ID=6aa6f79a9a57c3db422f4077
 T12_CARD_ID=6aa6f7a0481d33cae4a49889
 
 MOVE_TEST=pass
-LABEL_ADD_TEST=pass (mechanics verified with the unnamed red label 6aa6f706da9b20af3482110a; named "Rights hold" label not yet present)
-LABEL_REMOVE_TEST=pass (same label)
-COMMENT_ADD_TEST=not-supported
-COMMENT_READ_TEST=not-supported
-COMMENT_DELETE_TEST=not-supported
+LABEL_ADD_TEST=pass
+LABEL_REMOVE_TEST=pass
+COMMENT_ADD_REST_TEST=pass
+COMMENT_READ_REST_TEST=pass
+COMMENT_DELETE_REST_TEST=pass
 PROBE_CLEANUP=pass
 
-## Cards (verified by MCP read-back)
+T1_REST_STATE_VALID=yes
+T2_REST_STATE_VALID=yes
+T3_REST_STATE_VALID=yes
+RIGHTS_HOLD_EMPTY=yes
+
+TRELLO_API_KEY_AVAILABLE=yes
+TRELLO_TOKEN_AVAILABLE=yes
+FRESH_PROCESS_CAN_SEE_BOTH=yes
+
+SECRETS_EXPOSED=no
+SECRETS_COMMITTED=no
+
+## Cards (verified by MCP + REST read-back)
 
 | Card | Title | List | Due | Labels | Description |
 |---|---|---|---|---|---|
@@ -68,6 +82,8 @@ PROBE_CLEANUP=pass
 | T12 | August Newsletter | Published | none | none | filler |
 
 - Rights Hold list: empty (no open cards).
+- Rights hold label exists (red, named), applied to no cards.
+- T1/T2/T3 each have one file attachment under the registered filename; REST state valid.
 - No card has any comment; no Recall Desk marker anywhere.
 - No filler card has an attachment or mentions any registered Amara filename/URL.
 - All 12 titles are unique.
@@ -75,20 +91,10 @@ PROBE_CLEANUP=pass
 ## Setup probe
 
 `[Recall Desk setup probe]` (card 6aa6f7a6702df88dae9b78ee) was created in Ideas, moved to Rights Hold and read back (list changed), label attached and read back (present), label detached and read back (absent), then archived (`closed: true`). It does not appear in open-card enumeration.
-The comment step was attempted: the MCP rejected `add_comment` (`trelloWriteCard` action enum is create/update/move/archive/mark_done/attach_label/detach_label). No comment was created.
+Comment add/read/delete were verified via Trello REST on a throwaway probe and cleaned up (`COMMENT_*_REST_TEST=pass`, `PROBE_CLEANUP=pass`).
 
-## MCP limitations (connected Trello MCP, 2026-09-13)
+## MCP vs REST notes (2026-09-13)
 
-- No label create/rename tool → "Rights hold" label cannot be created/named.
-- No attachment tool, and card reads do not return attachments → T1/T2/T3 attachments cannot be added or verified.
-- No comment add/read/delete → hold marker comments cannot be verified.
-- No Trello API key/token is available locally for a REST fallback.
-
-## Remaining manual steps
-
-1. In the board UI, rename the red label `6aa6f706da9b20af3482110a` to `Rights hold` (keeps the ID) and record it as RIGHTS_HOLD_LABEL_ID. Do not apply it to any card.
-2. Upload (as files, not URL links) under the registered filenames:
-   - T1 ← `volunteer-drive-banner-2025.jpg` (https://tomiwaaluko.github.io/riverbend-assets/images/volunteer-drive-banner-2025.jpg)
-   - T2 ← `amara-okafor-portrait.jpg` (https://tomiwaaluko.github.io/riverbend-assets/images/amara-okafor-portrait.jpg)
-   - T3 ← `jordan-mentor.jpg` (https://tomiwaaluko.github.io/riverbend-assets/images/jordan-mentor.jpg)
-3. With a Trello key/token (REST), capture attachment IDs/names and verify comment add/read/delete on a throwaway card.
+- Connected Trello MCP: no label create/rename, no attachment tool, no comment add/read/delete.
+- REST fallback used for label naming confirmation, attachment ID/filename capture, and comment add/read/delete verification.
+- API key and token are available to a fresh process; values are not stored in this repo.

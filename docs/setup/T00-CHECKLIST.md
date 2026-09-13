@@ -25,12 +25,12 @@
 
 - [x] board created (see docs/setup/TRELLO-MANIFEST.md)
 - [x] five lists created
-- [ ] Rights hold label created — blocked: MCP has no label create/rename; unnamed red label exists, rename manually
+- [x] Rights hold label created (named, red; not applied to any card)
 - [x] T1–T12 created (titles, lists, due date, T2 description verified)
-- [ ] attachment filenames verified — blocked: MCP has no attachment tool; manual upload required
+- [x] attachment filenames verified (T1/T2/T3 REST IDs and filenames recorded)
 - [x] move test verified
-- [x] label add/remove verified (with the unnamed red label)
-- [ ] comment add/read/delete verified — blocked: MCP does not support comments
+- [x] label add/remove verified
+- [x] comment add/read/delete verified (REST)
 
 ## AIRTABLE
 
