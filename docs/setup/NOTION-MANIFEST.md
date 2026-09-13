@@ -1,7 +1,8 @@
 # Notion Fixture Manifest — Riverbend Website
 
-Generated during T00 setup. All IDs below were returned and confirmed by the
-Notion MCP (`notion-create-pages` / `notion-fetch`) — no IDs are guessed.
+Generated during T00 setup. Page IDs were returned by the Notion MCP
+(`notion-create-pages` / `notion-fetch`); image block IDs were confirmed by
+the real Notion REST API. No IDs are guessed.
 
 ## Connector capability note (read first)
 
@@ -40,11 +41,11 @@ ROOT_PUBLIC_URL=NOT_AVAILABLE (no publish tool exposed by this MCP; publish manu
 ```
 N1_PAGE_ID=ec0b1ee3-2c92-4c82-b816-7c59112abd95
 N1_PAGE_URL=https://app.notion.com/p/ec0b1ee32c924c82b8167c59112abd95
-N1_IMAGE_BLOCK_ID=NOT_AVAILABLE (block-level IDs not exposed by this MCP)
+N1_IMAGE_BLOCK_ID=c6fd67e0-87d5-40fb-a27e-75de6df3dac4
 N1_IMAGE_URL=https://tomiwaaluko.github.io/riverbend-assets/images/amara-portrait-square.jpg
 ```
 
-Verified content (via notion-fetch): heading "Mentors make Riverbend work";
+Verified content (via notion-fetch and direct REST read): heading "Mentors make Riverbend work";
 image with caption "Amara, volunteer mentor since 2023"; text "Apply by
 October 15, no experience needed"; link "Apply to volunteer".
 
@@ -53,11 +54,11 @@ October 15, no experience needed"; link "Apply to volunteer".
 ```
 N2_PAGE_ID=1e920a50-8af9-4712-b072-39265437da13
 N2_PAGE_URL=https://app.notion.com/p/1e920a508af94712b07239265437da13
-N2_IMAGE_BLOCK_ID=NOT_AVAILABLE (block-level IDs not exposed by this MCP)
+N2_IMAGE_BLOCK_ID=fa07d443-94fb-4c46-afd2-2ee388f28f5c
 N2_IMAGE_URL=https://tomiwaaluko.github.io/riverbend-assets/images/amara-okafor-portrait.jpg
 ```
 
-Verified content: historical workshop narrative; image with caption "Amara
+Verified content (via direct REST read): historical workshop narrative; image with caption "Amara
 leading the robotics table on day two"; a second, unrelated
 workshop-participant image (`workshop-participant.jpg`); no recruitment CTA.
 
@@ -66,11 +67,11 @@ workshop-participant image (`workshop-participant.jpg`); no recruitment CTA.
 ```
 N3_PAGE_ID=a983a11c-ad44-4525-9a12-7ffb313f580e
 N3_PAGE_URL=https://app.notion.com/p/a983a11cad4445259a127ffb313f580e
-N3_IMAGE_BLOCK_ID=NOT_AVAILABLE (block-level IDs not exposed by this MCP)
+N3_IMAGE_BLOCK_ID=f4884441-b313-4084-9e2f-aa3acbb3d8de
 N3_IMAGE_URL=https://tomiwaaluko.github.io/riverbend-assets/images/amara-okafor-portrait.jpg
 ```
 
-Verified content: donor-facing text containing "Your gifts funded 38
+Verified content (via direct REST read): donor-facing text containing "Your gifts funded 38
 workshops"; image with caption "Volunteers like Amara gave 2,100 hours"; no
 call to action.
 
@@ -98,21 +99,22 @@ jordan-mentor.jpg           -> 200 image/jpeg 304486 bytes
 workshop-participant.jpg    -> 200 image/jpeg 291502 bytes
 ```
 
-## Manual API-behavior verification
+## REST API-behavior verification
 
 ```
-ARCHIVE_TEST=not-run (blocked: no archive/block tool in this MCP's surface)
-DIRECT_ARCHIVED_BLOCK_READ=not-run (blocked: no get-block tool)
-RESTORE_TEST=not-run (blocked: no restore/unarchive tool)
+ARCHIVE_TEST=pass (temporary test block archived through PATCH /v1/blocks/{test-id})
+DIRECT_ARCHIVED_BLOCK_READ=pass (GET /v1/blocks/{test-id} returned archived=true)
+ARCHIVED_VISIBLE_IN_CHILD_LIST=no (GET /v1/blocks/{root-id}/children omitted the archived test block)
+RESTORE_TEST=pass (PATCH /v1/blocks/{test-id} restored it; direct read returned archived=false)
+CLEANUP_TEST_BLOCK_ARCHIVED=yes (the temporary test block was archived again)
 PUBLICATION_VERIFIED=no (blocked: no publish tool; manual step required)
 ```
+
+The archive/read/restore sequence used a newly created temporary paragraph
+under the Riverbend Website root. N1, N2, and N3 image blocks were read and
+matched by their exact registered external image URLs but were not modified.
 
 ## Manual steps remaining
 
 1. Publish "Riverbend Website" to web (Notion UI: Share → Publish to web),
    then record the public URL here.
-2. Run the block-level archive/read/restore verification against the real
-   Notion REST API (integration token + `httpx`, or the Notion UI directly)
-   rather than this chat MCP connector, and capture the three image block IDs
-   at that time — they are required later for Airtable occurrence keys
-   (`notion:block:<id>`).
