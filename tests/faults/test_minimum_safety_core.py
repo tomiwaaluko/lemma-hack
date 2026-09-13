@@ -62,10 +62,10 @@ def test_f9_registry_sync_failure_is_partial_without_inflating_occurrence_counts
 
 
 def test_f12_successful_rerun_adds_no_content_effects_or_marker(tmp_path):
-    first, world, _ = scenario(tmp_path)
+    first, world, _ = scenario(tmp_path, run_id="RUN-FIRST")
     effects_before = list(_content_effects(world))
 
-    second, world, _ = scenario(tmp_path, world=world)
+    second, world, _ = scenario(tmp_path, world=world, run_id="RUN-SECOND")
 
     assert first.counts["Removed"] == second.counts["Removed"] == 1
     assert second.counts["Held"] == 1

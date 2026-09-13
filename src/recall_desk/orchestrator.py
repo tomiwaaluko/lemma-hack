@@ -73,7 +73,7 @@ def run_req001(settings, notion, trello, airtable, journal, *, run_id=None, scop
                 actions = (ActionType.MOVE_CARD, ActionType.ADD_LABEL, ActionType.ADD_COMMENT)
                 op_ids = [make_op_id(run_id, ref.occurrence_key, action, index) for index, action in enumerate(actions, 1)]
                 journal.add_ops([Op(op_id=op_id, run_id=run_id, request_id="REQ-001", occurrence_key=ref.occurrence_key, action=action, target_id=ref.target_id, params={}, precondition_hash=before_hash, step=index) for index, (op_id, action) in enumerate(zip(op_ids, actions), 1)])
-                try: executor.hold(op_ids, ref.target_id, hold_list, label, marker("REQ-001", run_id, op_ids[2]) + " Held: withdrawn use"); outcome = Outcome.HELD_VERIFIED if verify_trello_hold(trello, ref.target_id, hold_list, label, "REQ-001") else Outcome.ACTION_FAILED
+                try: executor.hold(op_ids, ref.target_id, hold_list, label, "REQ-001", marker("REQ-001", run_id, op_ids[2]) + " Held: withdrawn use"); outcome = Outcome.HELD_VERIFIED if verify_trello_hold(trello, ref.target_id, hold_list, label, "REQ-001") else Outcome.ACTION_FAILED
                 except Exception: outcome = Outcome.ACTION_FAILED
         elif decision.verdict == Verdict.PRESERVE:
             outcome = Outcome.PRESERVED_VERIFIED_UNCHANGED if before_hash == state_hash(ref, notion, trello, context) else Outcome.ACTION_FAILED
