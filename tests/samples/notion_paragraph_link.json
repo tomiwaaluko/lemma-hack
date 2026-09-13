@@ -1,0 +1,20 @@
+{
+  "object": "block",
+  "id": "paragraph-block-1",
+  "type": "paragraph",
+  "archived": false,
+  "paragraph": {
+    "rich_text": [
+      {
+        "type": "text",
+        "plain_text": "Apply to volunteer",
+        "href": "https://riverbend.example.test/volunteer"
+      },
+      {
+        "type": "text",
+        "plain_text": " today.",
+        "href": null
+      }
+    ]
+  }
+}

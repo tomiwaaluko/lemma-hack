@@ -1,0 +1,13 @@
+{
+  "object": "block",
+  "id": "archived-image-block-1",
+  "type": "image",
+  "archived": true,
+  "image": {
+    "type": "file",
+    "file": {
+      "url": "https://secure.notion-static.com/example/image.jpg"
+    },
+    "caption": []
+  }
+}

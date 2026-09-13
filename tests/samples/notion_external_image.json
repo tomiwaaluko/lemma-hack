@@ -1,0 +1,19 @@
+{
+  "object": "block",
+  "id": "image-block-1",
+  "type": "image",
+  "archived": false,
+  "image": {
+    "type": "external",
+    "external": {
+      "url": "https://assets.example.test/amara-portrait-square.jpg"
+    },
+    "caption": [
+      {
+        "type": "text",
+        "plain_text": "Amara, volunteer mentor since 2023",
+        "href": null
+      }
+    ]
+  }
+}
