@@ -9,16 +9,16 @@
 
 ## NOTION
 
-- [ ] Riverbend Website created
-- [ ] N1–N9 created
-- [ ] N1 image block ID captured
-- [ ] N2 image block ID captured
-- [ ] N3 image block ID captured
-- [ ] external image URLs verified
-- [ ] archive test verified
-- [ ] direct archived-block read verified
-- [ ] restore/unarchive verified
-- [ ] public publishing checked
+- [x] Riverbend Website created
+- [x] N1–N9 created
+- [ ] N1 image block ID captured — blocked: Notion MCP has no block-level API (see docs/setup/NOTION-MANIFEST.md)
+- [ ] N2 image block ID captured — blocked: same
+- [ ] N3 image block ID captured — blocked: same
+- [x] external image URLs verified (HTTP 200, image/jpeg for all four URLs in use)
+- [ ] archive test verified — blocked: no archive/block tool exposed by this MCP
+- [ ] direct archived-block read verified — blocked: no get-block tool exposed
+- [ ] restore/unarchive verified — blocked: no restore tool exposed
+- [ ] public publishing checked — blocked: no publish tool exposed; manual step required
 
 ## TRELLO
 
